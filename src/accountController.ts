@@ -28,14 +28,18 @@ export class AccountController {
       case OperationType.DEPOSIT:
         const destinationBalance = accountService.deposit(destination, amount);
 
-        return response.status(200).send(destinationBalance.toString());
+        return response.status(201).json({
+          destination: { id: destination, balance: destinationBalance}
+        });
       case OperationType.WITHDRAW:
         const originBalance = accountService.withdraw(origin, amount);
 
         if (!originBalance) {
           return response.status(404).send('0'); 
         }
-        return response.status(200).send(originBalance.toString());
+        return response.status(201).json({
+          origin: { id: origin, balance: originBalance}
+        });
       case OperationType.TRANSFER:
         const balances =  accountService.transfer(origin,destination,amount);
 
