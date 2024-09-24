@@ -1,3 +1,5 @@
+import { TransferResponse } from "./TransferResponse";
+
 export class AccountService {
   private accounts: Record<string, number> = {};
 
@@ -27,10 +29,10 @@ export class AccountService {
     return this.accounts[origin];
   }
 
-  public transfer(origin: string, destination: string, amount: number): any {
+  public transfer(origin: string, destination: string, amount: number): TransferResponse {
     const balances = {
-      origin: this.withdraw(origin, amount),
-      destination: this.deposit(destination, amount)
+      originBalance: this.withdraw(origin, amount),
+      destinationBalance: this.deposit(destination, amount)
     }
 
     return balances; 

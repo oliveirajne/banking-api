@@ -52,8 +52,8 @@ export class AccountController {
         const balances =  accountService.transfer(origin, destination, amount);
 
         return response.status(201).json({
-          origin: { id: origin, balance: balances.origin },
-          destination: { id: destination, balance: balances.destination },
+          origin: { id: origin, balance: balances.originBalance },
+          destination: { id: destination, balance: balances.destinationBalance },
         });
 
       default:
