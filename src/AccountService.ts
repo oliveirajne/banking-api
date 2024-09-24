@@ -5,8 +5,12 @@ export class AccountService {
     this.accounts = {};
   }
 
-  public getBalance(accountId: string): number | null {
-    return this.accounts[accountId] !== undefined ? this.accounts[accountId] : null;
+  public findAccount(accountId: string): boolean {
+    return this.accounts[accountId] !== undefined;
+  }
+
+  public getBalance(accountId: string): number {
+    return this.accounts[accountId];
   }
 
   public deposit(destination: string, amount: number): number {
@@ -17,21 +21,13 @@ export class AccountService {
     return this.accounts[destination];
   }
 
-  public withdraw(origin: string, amount: number): number | null {
-    if (!this.accounts[origin]) {
-      return null;
-    }
-
+  public withdraw(origin: string, amount: number): number {
     this.accounts[origin] -= amount;
 
     return this.accounts[origin];
   }
 
   public transfer(origin: string, destination: string, amount: number): any {
-    if (!this.accounts[origin]) {
-      return null;
-    }
-
     const balances = {
       origin: this.withdraw(origin, amount),
       destination: this.deposit(destination, amount)

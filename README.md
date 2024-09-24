@@ -1,6 +1,6 @@
 # Banking API
 
-This project is an API developed using Node.js (version 20.12.0). It consists of three endpoints, POST /reset GET /balance, and POST /event.
+This project is an API developed using Node.js (version 20.12.0). It consists of three endpoints, POST /reset, GET /balance, and POST /event.
 
 ## Prerequisites
 
